@@ -7,8 +7,10 @@ const fabonacci = () => {
   };
 }
 
+const fb = fabonacci()
+
+
 const fabonacciLayout = () => {
-  const fb = fabonacci()
 
   let cache = [
     {n: 0, width: 0, height: 0, direction: 'left'},
@@ -17,23 +19,19 @@ const fabonacciLayout = () => {
     {n: 2, width: 2, height: 3, direction: 'top', nodes: [[0, 0, 1, 1], [0, 1, 1, 1], [0, -2, 2, 2]]},
   ];
 
-  const getNextDirection = (current) => {
-    return {
-      left: 'bottom',  
-      bottom: 'right',
-      right: 'top',    
-      top: 'left',     
-    }[current]
-  }
-
-  return function __fabonacci(n) {
+  return function __layout(n) {
     if (typeof cache[n] === 'object') return cache[n]
-    const prev = __fabonacci(n - 1);
+    const prev = __layout(n - 1);
     const next = {
       n: fb(n), 
       width: prev.width, 
       height: prev.height, 
-      direction: getNextDirection(prev.direction),
+      direction: {
+        left: 'bottom',  
+        bottom: 'right',
+        right: 'top',    
+        top: 'left',     
+      }[prev.direction],
       nodes: prev.nodes.slice()
     }
 
@@ -58,12 +56,12 @@ const fabonacciLayout = () => {
         startPoint = [prevLinkPoint[0], prevLinkPoint[1] - next.n]
         break;
       case 'top':
-      // next start point is current point's top-right
+        // next start point is current point's top-right
         prevLinkPoint = [currentLastNode[0] + currentLastNode[2], currentLastNode[1]]
         startPoint = [prevLinkPoint[0] - next.n, prevLinkPoint[1] - next.n]
         break;
       case 'left':
-      // next start point is current point's top-left
+        // next start point is current point's top-left
         prevLinkPoint = [currentLastNode[0], currentLastNode[1]]
         startPoint = [prevLinkPoint[0] - next.n, prevLinkPoint[1]]
         break;
@@ -81,5 +79,5 @@ const fabonacciLayout = () => {
   };
 }
 
-module.exports = module.exports.default = fabonacciLayout
-module.exports.fabonacci = fabonacci
+module.exports = module.exports.default = fabonacciLayout()
+module.exports.fabonacci = fb
