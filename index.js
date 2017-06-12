@@ -15,7 +15,7 @@ const fabonacciLayout = () => {
     {n: 0, width: 0, height: 0, direction: 'left'},
     {n: 1, width: 1, height: 1, direction: 'bottom', nodes: [[0, 0, 1, 1]] },
     {n: 1, width: 2, height: 1, direction: 'right', nodes: [[0, 0, 1, 1], [1, 0, 1, 1]]},
-    {n: 2, width: 2, height: 3, direction: 'top', nodes: [[0, 0, 1, 1], [0, 1, 1, 1], [0, -2, 2, 2]]},
+    {n: 2, width: 2, height: 3, direction: 'top', nodes: [[0, 0, 1, 1], [1, 0, 1, 1], [0, -2, 2, 2]]},
   ];
 
   return function __layout(n) {
