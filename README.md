@@ -1,8 +1,8 @@
-# fabonacci-layout 
+# fibonacci-layout 
 
 ===
 
-fabonacci layout (斐波那契布局算法)
+fibonacci layout (斐波那契布局算法)
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/34%2A21-FibonacciBlocks.png/600px-34%2A21-FibonacciBlocks.png" />
 
@@ -10,11 +10,11 @@ fabonacci layout (斐波那契布局算法)
 ## usage
 
 ```
-npm install fabonacci-layout
+npm install fibonacci-layout
 ```
 
 ```javascript
-const fbLayout = require('fabonacci-layout')
+const fbLayout = require('fibonacci-layout')
 
 const layout = fbLayout(8)
 
